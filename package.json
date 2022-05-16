@@ -1,0 +1,62 @@
+{
+  "name": "down-git",
+  "version": "0.0.0",
+  "packageManager": "pnpm@7.1.0",
+  "description": "Download dictionary or file from GitHub",
+  "keywords": [
+    "download",
+    "github",
+    "repository",
+    "dictionary",
+    "folder",
+    "file"
+  ],
+  "license": "MIT",
+  "author": "zz",
+  "bugs": {
+    "url": "https://github.com/holazz/down-git/issues"
+  },
+  "homepage": "https://github.com/holazz/down-git#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holazz/down-git.git"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "bin": {
+    "down-git": "bin/down-git.mjs"
+  },
+  "scripts": {
+    "dev": "tsx src/cli.ts",
+    "build": "unbuild",
+    "lint": "eslint .",
+    "prepublishOnly": "pnpm build",
+    "release": "bumpp --commit --push --tag"
+  },
+  "dependencies": {
+    "@octokit/rest": "^18.12.0",
+    "mri": "^1.2.0",
+    "ora": "^5.4.1",
+    "picocolors": "^1.0.0"
+  },
+  "devDependencies": {
+    "@holazz/eslint-config": "^1.0.5",
+    "@types/node": "^17.0.33",
+    "bumpp": "^7.1.1",
+    "eslint": "^8.15.0",
+    "tsx": "^2.1.0",
+    "typescript": "^4.6.4",
+    "unbuild": "^0.7.4"
+  }
+}
