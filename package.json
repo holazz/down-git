@@ -1,6 +1,6 @@
 {
   "name": "down-git",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "packageManager": "pnpm@7.1.0",
   "description": "Download dictionary or file from GitHub",
   "keywords": [
