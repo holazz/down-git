@@ -41,19 +41,20 @@ async function getDefaultBranch(ctx: Context): Promise<string> {
 }
 
 async function fetchFiles(ctx: Context) {
-  const branch = ctx.branch || await getDefaultBranch(ctx)
-  const { data } = await ctx.octokit.rest.git.getTree({
-    owner: ctx.owner,
-    repo: ctx.repo,
-    tree_sha: branch,
+  const { octokit, owner, repo, path, branch } = ctx
+  const ref = branch || await getDefaultBranch(ctx)
+  const { data } = await octokit.rest.git.getTree({
+    owner,
+    repo,
+    tree_sha: ref,
     recursive: '1',
   })
   const requests = data.tree
-    .filter(node => node.path?.startsWith(ctx.path || '') && node.type === 'blob')
+    .filter(node => node.path?.startsWith(path || '') && node.type === 'blob')
     .map(async (node) => {
       const { data: blob } = await ctx.octokit.git.getBlob({
-        owner: ctx.owner,
-        repo: ctx.repo,
+        owner,
+        repo,
         file_sha: node.sha!,
       })
       return {
