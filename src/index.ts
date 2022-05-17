@@ -89,9 +89,7 @@ export async function download(config: Config): Promise<void> {
       return file
     })
     await Promise.all(requests)
-    spinner.succeed(
-    `Done in ${((Date.now() - start) / 1000).toFixed(2)}s!`
-    )
+    spinner.succeed(`Done in ${((Date.now() - start) / 1000).toFixed(2)}s!`)
   } catch (e: any) {
     spinner.fail(e.message)
   }
