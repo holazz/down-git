@@ -22,7 +22,7 @@ down-git holazz/down-git/src -b main -o ./tmp
 
 > Use `down-git --help` for more information
 
-You can also use it in a module：
+You can also use it programmatically：
 
 ``` ts
 import { download } from 'down-git'

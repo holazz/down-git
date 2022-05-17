@@ -1,7 +1,7 @@
 import { createWriteStream, existsSync, promises as fs } from 'node:fs'
 import { Readable, promises as stream } from 'node:stream'
 import { Buffer } from 'node:buffer'
-import { dirname, resolve } from 'node:path'
+import { dirname, relative, resolve } from 'node:path'
 import { Octokit } from '@octokit/rest'
 import ora from 'ora'
 
@@ -29,6 +29,7 @@ function resolveRoute(route: string): Route {
 
 function getOctokit(token?: string): Octokit {
   const octokit = new Octokit({
+    userAgent: 'down-git',
     auth: token,
   })
   return octokit
@@ -80,7 +81,7 @@ export async function download(config: Config): Promise<void> {
     const files = await fetchFiles(context)
 
     const requests = files.map(async (file) => {
-      const dest = resolve(output || process.cwd(), file.path!)
+      const dest = resolve(output || process.cwd(), relative(context.path!, file.path!))
       if (!existsSync(dirname(dest)))
         await fs.mkdir(dirname(dest), { recursive: true })
       const writer = createWriteStream(dest)
