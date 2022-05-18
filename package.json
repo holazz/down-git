@@ -2,12 +2,12 @@
   "name": "down-git",
   "version": "0.0.2",
   "packageManager": "pnpm@7.1.0",
-  "description": "Download dictionary or file from GitHub",
+  "description": "Download directory or file from GitHub",
   "keywords": [
     "download",
     "github",
     "repository",
-    "dictionary",
+    "directory",
     "folder",
     "file"
   ],

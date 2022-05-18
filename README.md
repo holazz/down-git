@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/down-git?color=b43b4f&label=)](https://www.npmjs.com/package/down-git)
 
-Download dictionary or file from GitHub.
+Download directory or file from GitHub.
 
 ## Install
 
@@ -42,7 +42,7 @@ download(options).then(
 
 | name | required | description | default |
 | --- | --- | --- | --- |
-| `route` | true | Dictionary or file path (owner/repo/path)| - |
+| `route` | true | Directory or file path (owner/repo/path)| - |
 | `branch` | false | The name of the commit/branch/tag | Repository's default branch (usually `main` or `master`) |
 | `output` | false | Output directory| `process.cwd()` |
 | `token` | false | Personal access token| - |
